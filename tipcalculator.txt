@@ -1,0 +1,73 @@
+app.js 
+
+import logo from './logo.svg';
+import './App.css';
+import { useState } from 'react';
+
+function App() {
+  return (
+    <div className="App">
+     <h1>hello pratham</h1>
+     <Tipcalculator/>
+    </div>
+  );
+}
+
+function Tipcalculator(){
+
+  const [bill , setBill] = useState("");
+  const [percentage1 , setPercentage1] = useState(0);
+  const [percentage2 , setPercentage2] = useState(0);
+
+  const tip = bill * ((percentage1 + percentage2) / 2 / 100); 
+
+  function handleReset(){
+    setBill('')
+    setPercentage1(0)
+    setPercentage2(0)
+  }
+  
+  return ( <div>
+    <Billinput bill={bill} onsetBill={setBill} />
+    <Selectpercentage percentage={percentage1} onSelect={setPercentage1}>How didiyou like the service??</Selectpercentage>
+    <Selectpercentage percentage={percentage2} onSelect={setPercentage2}>How didi oyour freind like the service??</Selectpercentage>    
+    <Output bill={bill}  tip={tip}/>
+    <Reset onreset={handleReset}/>
+
+  
+  </div>
+  );
+}
+
+function Billinput( {bill , onsetBill}){
+  return ( 
+    <div>
+      <h2>How much wass the bill??</h2>
+      <input type = "text" placeholder="bill amount"
+        value={bill}
+        onChange={(e) => onsetBill(Number(e.target.value))}></input>
+    </div>
+  );
+}
+
+function Selectpercentage({ children , percentage , onSelect  }) {
+  return (
+    <div>
+      <label>{children}</label>
+      <select value={percentage} onChange={(e)=>onSelect(Number(e.target.value))}>
+        <option value='0'>bad as ( 0% )</option>
+        <option value='5'>better now ( 5% )</option>
+        <option value='10'>great ( 10% )</option>
+        <option value='15'>nice!! ( 15% ) </option>
+      </select>
+    </div>
+  );
+}
+
+function Output({bill , tip}) {
+  return <h3> Your pay {bill + tip } (${bill} + ${tip} tip )</h3> 
+}
+function Reset({onreset}) {
+  return <button onClick={onreset}> Reset </button>
+}
+export default App;

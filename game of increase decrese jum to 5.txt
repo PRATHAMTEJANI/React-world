@@ -1,0 +1,39 @@
+// game of increase decrese jum to 5 
+import React from 'react'
+import { useState } from 'react';
+import './App.css';
+
+export const App = () => {
+
+  const [num , setNum] = useState(0);
+
+  function incre(){
+
+    setNum(num + 1);
+  }
+  function decre(){
+    setNum(num - 1);
+  }
+  function fivex(){
+    setNum(num + 5);
+  }
+
+  function handlereset(){
+    setNum(0);
+
+  }
+  return (
+    <div>
+      <h1>Tejani mafia</h1>
+
+      <h1>{num}</h1>
+       <button onClick={incre}>increase </button>
+       <button onClick={decre}>decrease </button>
+       <button onClick={fivex}>5x </button>
+       <button onClick={handlereset}>Reset </button>
+    </div>
+    
+  )
+}
+
+export default App;

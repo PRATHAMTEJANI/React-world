@@ -1,0 +1,47 @@
+import React from 'react'
+import { useState} from 'react';
+import './App.css';
+
+export const App = () => {
+
+  const [num , setNum] = useState([10 , 20 , 30]);
+  const [num1 , setNum1] = useState('pratham');
+  const [num2 , setNum2] = useState({name:'pratham' , age: 20});
+
+  
+  function hadnleclick(){
+    console.log(num);
+    setNum(num.concat(99));
+    // const newNum = [...num];
+    // newNum.push(99);
+    // console.log(newNum);
+    // setNum(newNum);
+}
+ function hadnleclick1(){
+    console.log(num1);
+    setNum1('ARJUNA');
+    
+}
+
+function hadnleclick2(){
+
+  num2.name="delhi gang";
+  setNum2(prev=> ({...prev , age:21}));
+  console.log(num2);
+  
+}
+  return (
+    <div>CODE ARJUNA
+      <h1>{num}</h1>
+      <h1>{num1}</h1>
+      <h1>{num2.name},{num2.age}</h1>
+      <button onClick={hadnleclick}>click</button>
+      <button onClick={hadnleclick1}>press</button>
+      <button onClick={hadnleclick2}> press</button>
+    </div>
+    
+
+  )
+}
+export default App
+
