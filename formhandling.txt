@@ -1,0 +1,22 @@
+import React from 'react'
+import './App.css'
+
+export const App = () => {
+
+  const submitHandler = (elem) =>{
+    elem.preventDefault();  //page are not reload (form handled).
+    console.log('form submited');
+  }
+  return (
+    <div>
+      <form>
+        <input type="text" placeholder='enter name'/>
+        <button onClick={submitHandler}>Submit</button>
+      </form>
+    
+    </div>
+  )
+}
+export default App; 
+
+//form handling 
